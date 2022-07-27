@@ -11,7 +11,7 @@ from airflow.utils.task_group import TaskGroup
 #from utils.query_param import query_param
 
 # from operators.bq_table_copy_operator import BqTableCopyOperator
-from plugins.operators.testop import MyOwnOperator
+from operators.testop import MyOwnOperator
 
 
 
