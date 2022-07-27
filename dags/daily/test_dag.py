@@ -24,8 +24,5 @@ with DAG(
         template_searchpath='/',
 ) as dag:
     with TaskGroup('load') as load:
-        gen_bq_load_site(
-            project_id=PROJECT,
-            trigram=TRIGRAM,
-        )
+        MyOwnOperator.execute()
     load
