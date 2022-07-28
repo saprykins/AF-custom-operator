@@ -17,7 +17,7 @@ class MyOwnOperator(BaseOperator):
         #Store attributes in class
         self.name = name
 
-    def execute(self):
+    def execute(self, context):
         message = f"Hello {self.name}"
         print(message)
         return message
