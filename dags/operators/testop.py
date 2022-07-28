@@ -1,8 +1,9 @@
 
 
 #import libraries
-from airflow.models import BaseOperator
-from airflow.utils.decorators import apply_defaults
+# from airflow.models import BaseOperator
+# from airflow.utils.decorators import apply_defaults
+from airflow.models.baseoperator import BaseOperator
 
 #You can inherit from other operator of course
 class MyOwnOperator(BaseOperator):
@@ -10,15 +11,13 @@ class MyOwnOperator(BaseOperator):
     Write docstring if needed
     """
     #Apply apply_defaults decorator
-    @apply_defaults
-    def __init__(self,
-                 param = "parameter if needed",
-                 *args, **kwargs):
+    def __init__(self, name: str, **kwargs) -> None:
 
-        super(MyOwnOperator, self).__init__(*args, **kwargs)
+        super().__init__(**kwargs)
         #Store attributes in class
-        self.param = param
+        self.name = name
 
-    def execute():
-
-        print ("test operator")
+    def execute(self):
+        message = f"Hello {self.name}"
+        print(message)
+        return message
