@@ -74,12 +74,6 @@ with DAG(
     {% endfor %}
     """
     )
-    '''
-    t3 = BashOperator(
-        task_id='templated',
-        depends_on_past=False,
-        bash_command=templated_command,
-    )
-    '''
+    
     t3 = MyOwnOperator(task_id="sample", name="foo_bar")
     t1 >> [t2, t3]
