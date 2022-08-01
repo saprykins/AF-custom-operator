@@ -4,7 +4,7 @@ from textwrap import dedent
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
 
-from operators.testop import MyOwnOperator
+from operators.test_operator import MyOwnOperator
 
 # Operators; we need this to operate!
 from airflow.operators.bash import BashOperator
@@ -74,6 +74,6 @@ with DAG(
     {% endfor %}
     """
     )
-    
+
     t3 = MyOwnOperator(task_id="sample", name="foo_bar")
     t1 >> [t2, t3]
