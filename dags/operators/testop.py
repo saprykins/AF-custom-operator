@@ -6,6 +6,10 @@
 from airflow.models.baseoperator import BaseOperator
 
 #You can inherit from other operator of course
+
+from google.cloud import logging
+
+
 class MyOwnOperator(BaseOperator):
     """
     Write docstring if needed
@@ -19,5 +23,10 @@ class MyOwnOperator(BaseOperator):
 
     def execute(self, context):
         message = f"Hello {self.name}"
+        logging_client = logging.Client()
+        log_name = "_Default"
+        logger = logging_client.logger(log_name)
+        logger.log_text(message)
+        
         print(message)
         return message
